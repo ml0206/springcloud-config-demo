@@ -1,0 +1,18 @@
+server:
+  port: 8762
+spring:
+  application:
+    name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ml0206/config-demo.git
+          search-paths: config-demo
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+

@@ -1,0 +1,31 @@
+server:
+  port: 8010
+
+spring:
+  application:
+    name: config-client
+
+  cloud:
+    config:
+#      uri: http://localhost:8762/   #指定配置中心地址，如果配置中心注册在eureka上了，可以直接通过discovery.service-id获取配置中心
+      discovery:
+        enabled: true  # 开启服务发现
+        service-id: config-server  #配置中心的微服务名称
+      fail-fast: true
+      profile: dev  #远程配置文件的环境 例如：springcloud-config-dev.yml，即dev
+      name: config-client  #远程配置文件的前缀  例如：springcloud-config-dev.yml，前缀就是springcloud-dev
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+
+management:
+  security:
+  enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
